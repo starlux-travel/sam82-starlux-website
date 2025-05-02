@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>網站樣式設定 | StarLux CMS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      background: #f7f7f7;
+      padding: 2rem;
+      color: #333;
+    }
+    h2 {
+      color: #00796b;
+    }
+    .panel {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    select, button {
+      padding: 0.75rem;
+      font-size: 1rem;
+      margin-top: 1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+    button {
+      background: #00bcd4;
+      color: white;
+      border: none;
+      margin-top: 2rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0097a7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="panel">
+    <h2>網站樣式設定</h2>
+
+    <label for="theme">選擇主題色系：</label>
+    <select id="theme">
+      <option value="summer">🏖️ 夏日海洋藍</option>
+      <option value="spring">🌿 春日薄荷綠</option>
+      <option value="autumn">🍁 秋季米杏橘</option>
+      <option value="winter">❄️ 冬季冰川藍</option>
+      <option value="cherry">🌸 粉櫻節粉嫩系</option>
+    </select>
+
+    <button onclick="updateTheme()">儲存主題設定</button>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.11/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "你的apiKey",
+      authDomain: "你的authDomain",
+      projectId: "你的projectId",
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    // 顏色設定對應
+    const themePresets = {
+      summer: { primary: "#00BCD4", name: "夏日海洋藍" },
+      spring: { primary: "#A5E1AD", name: "春日薄荷綠" },
+      autumn: { primary: "#F4A261", name: "秋季米杏橘" },
+      winter: { primary: "#BDE0FE", name: "冬季冰川藍" },
+      cherry: { primary: "#FFB6C1", name: "粉櫻節粉嫩系" },
+    };
+
+    function updateTheme() {
+      const themeKey = document.getElementById("theme").value;
+      const themeData = themePresets[themeKey];
+
+      db.collection("siteSettings").doc("theme").set({
+        name: themeData.name,
+        primaryColor: themeData.primary,
+        key: themeKey,
+        updatedAt: new Date()
+      })
+      .then(() => {
+        alert("已成功更新主題色為：" + themeData.name);
+      })
+      .catch((error) => {
+        console.error("儲存失敗：", error);
+        alert("儲存失敗，請稍後再試");
+      });
+    }
+  </script>
+</body>
+</html>

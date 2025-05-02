@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>StarLux Travel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .content {
+      flex: 1;
+    }
+    footer {
+      background-color: #d8e4ea;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      flex-wrap: wrap;
+    }
+    .footer-left img {
+      width: 120px;
+    }
+    .footer-right {
+      text-align: right;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .footer-right a {
+      color: #1f4c65;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+    .footer-right a:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 600px) {
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+      .footer-right {
+        text-align: center;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <!-- 主要內容區 -->
+  </div>
+  <footer>
+    <div class="footer-left">
+      <img src="images/starlux_bus.png" alt="StarLux Bus Logo" />
+    </div>
+    <div class="footer-right">
+      <div>聯絡我們 | 條款與細則 | 常見問題 Q&A</div>
+      <div>
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+      </div>
+      <div style="font-size: 12px; margin-top: 5px;">© 2025 StarLux Travel Agency</div>
+    </div>
+  </footer>
+</body>
+</html>

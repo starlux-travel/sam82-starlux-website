@@ -1,0 +1,7 @@
+{
+  "projects": {
+    "firebase deploy --only hosting": "starlux-travel"
+  },
+  "targets": {},
+  "etags": {}
+}
