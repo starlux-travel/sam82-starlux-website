@@ -1,6 +1,11 @@
 {
   "projects": {
+<<<<<<< HEAD
     "firebase deploy --only hosting": "starlux-travel"
+=======
+    "default": "starlux-travel",
+    "alias": "starlux-travel"
+>>>>>>> 776f565e4246f8b41ebe8436fb46f8cd72076e3c
   },
   "targets": {},
   "etags": {}
